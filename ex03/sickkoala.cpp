@@ -15,7 +15,7 @@ SickKoala::~SickKoala(void)
 
 void SickKoala::poke(void)
 {
-	std::cout << "Mr." << name << ": Gooeeeeerrk !! :’(" << std::endl;
+	std::cout << "Mr." << name << ": Gooeeeeerrk !! :'(" << std::endl;
 }
 
 bool SickKoala::takeDrug(std::string str)
