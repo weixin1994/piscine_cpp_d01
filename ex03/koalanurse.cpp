@@ -10,7 +10,7 @@ KoalaNurse::KoalaNurse(int id)
 
 KoalaNurse::~KoalaNurse(void)
 {
-	std::cout << "Nurse " << ID << ":  Enfin un peu de repos !" << std::endl;
+	std::cout << "Nurse " << ID << ": Enfin un peu de repos !" << std::endl;
 }
 
 void KoalaNurse::giveDrug(std::string drug, SickKoala *patient)
