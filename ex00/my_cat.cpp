@@ -1,32 +1,28 @@
 #include <iostream>
+#include <string>
+#include <cstring>
 #include <fstream>
 
-void mycat(int nb, char **args)
+void my_cat(char **buff)
 {
-	std::ifstream myStream;
 	int i = 0;
-	std::string buff;
-
-	while(nb--)
-    {
-		myStream.open(args[i]);
-		if(myStream)
-		{
-			while(getline(myStream, buff, '\0'))
-				std::cout << buff << std::endl;
-			myStream.close();
-		}
+	char c;
+	while (buff[++i] != NULL)
+	{
+		std::ifstream file(buff[i], std::ios::in);
+		if(!file)
+			std::cerr << "my_cat: " << buff[i] << ": No such file or directory" << std::endl;
 		else
-			std::cerr << "my_cat: " << args[i] << ": No such file or directory" << std::endl;
-		i++;
-    }
+			while (file.get(c))
+				std::cout << c;
+	}
 }
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-  if (argc < 2)
-    std::cout << "my_cat: Usage : ./my_cat file [...]" << std::endl;
-  else
-    mycat(argc - 1, &(*(argv + 1)));
+	if(argc < 2)
+		std::cout << "my_cat: Usage : ./my_cat file [...]\n";
+	else
+		my_cat(argv);
+	return 0;
 }
-
